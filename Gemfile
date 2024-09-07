@@ -75,3 +75,5 @@ gem "sassc"
 gem "activeadmin"
 gem 'active_material', '~> 2.1', '>= 2.1.2'
 gem 'rmagick'
+gem 'cocoon'
+gem 'image_processing', '~> 1.2'

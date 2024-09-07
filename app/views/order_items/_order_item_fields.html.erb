@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <%= item_form.label :product_id, "Product", style: "display: block" %>
+  <%= item_form.number_field :product_id %>
+  <%= item_form.label :quantity, style: "display: block" %>
+  <%= item_form.number_field :quantity %>
+  <%= item_form.label :sub_total, style: "display: block" %>
+  <%= item_form.text_field :sub_total %>
+  <%= link_to_remove_association "Remove Item", item_form, class: "remove-fields" %>
+</div>

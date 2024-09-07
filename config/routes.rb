@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :order_items
+  resources :orders
   resources :products
   get 'home/index'
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -10,7 +10,7 @@ ActiveAdmin.register Product do
     column :updated_at
     column :image do |product|
       if product.image.attached?
-        image_tag url_for(product.image), size: '100x100'
+        image_tag product.image.variant(:thumb), size: '100x100'
       else
         'No Image'
       end
@@ -27,10 +27,11 @@ ActiveAdmin.register Product do
     f.inputs do
       f.input :name
       f.input :price
-      f.input :image, as: :file
+      f.input :image, as: :file, html_input: {id: "product-img-input"}, hint: f.object.image.present? ? image_tag(f.object.image.variant(:thumb), id: 'product-img-preview', style: 'max-width: 300px;') : content_tag(:span, "No image yet")
     end
     f.actions
   end
+  
 
   show do
     attributes_table do
