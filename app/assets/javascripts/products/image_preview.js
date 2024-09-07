@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   const fileInput = document.querySelector('input[type="file"]');
+  if (fileInput===null) return
   fileInput.addEventListener('change', function(event) {
     const imagePreview = fileInput.nextElementSibling;
     const file = event.target.files[0];

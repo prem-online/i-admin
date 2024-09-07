@@ -6,8 +6,12 @@ ActiveAdmin.register Order do
     id_column
     column :order_number
     column :total
-    column :created_at
-    column :updated_at
+    column :created_at do |obj|
+      obj.created_at.in_time_zone(current_admin_user.timezone)
+    end
+    column :updated_at do |obj|
+      obj.updated_at.in_time_zone(current_admin_user.timezone)
+    end
     actions
   end
 
@@ -29,9 +33,27 @@ ActiveAdmin.register Order do
       row :id
       row :order_number
       row :total
-      row :created_at
-      row :updated_at
+      row :created_at do |obj|
+        obj.created_at.in_time_zone(current_admin_user.timezone)
+      end
+      row :updated_at do |obj|
+        obj.updated_at.in_time_zone(current_admin_user.timezone)
+      end
     end
-    active_admin_comments
+
+    panel 'Items' do
+      table_for order.order_items do
+        column :id
+        column 'Name' do |obj|
+          obj.product.name
+        end
+        column 'Image' do |obj|
+          image_tag obj.product.image.variant(:micro), class: 'thumbnail_image'
+        end
+        column :quantity
+        column :sub_total
+      end
+    end
+
   end
 end

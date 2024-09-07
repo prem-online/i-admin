@@ -14,7 +14,13 @@ if Rails.env.development?
   admin = AdminUser.find_or_initialize_by(email: 'admin@example.com') 
   admin.update(password: 'password', password_confirmation: 'password')
 end
+categories = [
+  {name: 'Category 1'},
+  {name: 'Category 2'},
+  {name: 'Category 3'},
+]
 
+Category.upsert_all(categories, unique_by: :name)
 products = [
   { name: 'Product 1', price: 100},
   { name: 'Product 2', price: 200 },

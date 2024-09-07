@@ -1,0 +1,17 @@
+table do
+  thead do
+  tr do
+  %w[Name Sold Total_Sales Created_at].each &method(:th)
+  end
+  end
+  tbody do
+    products.each do |product|
+      tr do
+        td product.name
+        td product.sold_quantity
+        td product.sold_quantity * product.price
+        td product.created_at.in_time_zone(current_admin_user.timezone)
+      end
+    end
+  end
+  end
