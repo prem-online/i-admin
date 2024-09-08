@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :avatar, :timezone
 
   index do
     selectable_column
@@ -7,7 +7,12 @@ ActiveAdmin.register AdminUser do
     column :email
     column :current_sign_in_at
     column :sign_in_count
-    column :created_at
+    column :created_at do |obj|
+      obj.created_at.in_time_zone(current_admin_user.timezone)
+    end
+    column :updated_at do |obj|
+      obj.updated_at.in_time_zone(current_admin_user.timezone)
+    end
     actions
   end
 
@@ -21,6 +26,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :timezone, as: :searchable_select, collection: Timezone.names
     end
     f.actions
   end

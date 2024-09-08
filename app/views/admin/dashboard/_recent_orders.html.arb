@@ -1,0 +1,17 @@
+table do
+thead do
+tr do
+%w[Order_Number Total Create_at Updated_at].each &method(:th)
+end
+end
+tbody do
+  orders.each do |order|
+    tr do
+      td order.order_number
+      td order.total
+      td order.created_at.in_time_zone(current_admin_user.timezone)
+      td order.updated_at.in_time_zone(current_admin_user.timezone)
+    end
+  end
+end
+end
