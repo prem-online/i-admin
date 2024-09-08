@@ -2,6 +2,8 @@
 
 This Ruby on Rails application provides an interface for managing categories, products, and tracking customer orders. The app uses **ActiveAdmin** to offer an admin interface, enabling easy management of categories, products, and orders.
 
+![Admin Panel](app/assets/images/i_admin_pages_5.png)
+
 ## **Features**
 
 - **Category Management**: Add, edit, and delete product categories.
@@ -72,6 +74,7 @@ You can change the admin credentials by editing the `db/seeds.rb` file and runni
 **Product Management**
 - Admins can create, update, or delete products.
 - Products have attributes such as name, price, description, stock, and category association.
+
 **Order Tracking**
 - Admins can track customer orders.
 - View order details such as product quantity, total amount, and order status.
